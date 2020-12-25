@@ -37,7 +37,8 @@ User.init({
   },
 }, {
   sequelize: sequelize,
-  modelName: 'Users'
+  modelName: 'Users',
+  paranoid: true,
 });
 
 exports.User = User;
