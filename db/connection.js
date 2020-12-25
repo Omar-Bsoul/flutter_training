@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const { DB_CONFIG } = require('./config/config');
 
 const sequelize = new Sequelize(DB_CONFIG.DB_NAME, DB_CONFIG.DB_USERNAME, DB_CONFIG.DB_PASSWORD, {
@@ -6,7 +6,8 @@ const sequelize = new Sequelize(DB_CONFIG.DB_NAME, DB_CONFIG.DB_USERNAME, DB_CON
   dialect: DB_CONFIG.DB_DIALECT,
 });
 
-sequelize.authenticate()
+sequelize
+  .authenticate()
   .then(() => {
     console.log('connected to db');
   })

@@ -1,42 +1,43 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
       },
       firstName: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
       lastName: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
       password: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
       username: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         unique: true,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
       },
       deletedAt: {
         allowNull: true,
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
       },
     });
   },
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface, DataTypes) => {
     return queryInterface.dropTable('Users');
-  }
+  },
 };

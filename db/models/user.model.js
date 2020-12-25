@@ -12,33 +12,37 @@ class User extends Model {
   deletedAt;
 }
 
-User.init({
-  id: {
-    allowNull: false,
-    type: DataTypes.STRING,
-    primaryKey: true,
+User.init(
+  {
+    id: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+    },
+    username: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    password: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    firstName: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    lastName: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
   },
-  username: {
-    allowNull: false,
-    type: DataTypes.STRING,
-    unique: true,
-  },
-  password: {
-    allowNull: false,
-    type: DataTypes.STRING,
-  },
-  firstName: {
-    allowNull: false,
-    type: DataTypes.STRING,
-  },
-  lastName: {
-    allowNull: false,
-    type: DataTypes.STRING,
-  },
-}, {
-  sequelize: sequelize,
-  modelName: 'Users',
-  paranoid: true,
-});
+  {
+    sequelize: sequelize,
+    modelName: 'Users',
+    paranoid: true,
+  }
+);
 
 exports.User = User;

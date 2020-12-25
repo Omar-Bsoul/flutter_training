@@ -5,16 +5,25 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
+    "db:remigrate": "npm run db:migrate:undo:all && npm run db:migrate",
+    "db:seed:all": "npx sequelize-cli db:seed:all",
+    "db:seed:undo:all": "npx sequelize-cli db:seed:undo:all",
+    "db:reseed": "npm run db:seed:undo:all && npm run db:seed:all",
+    "db:init-schema": "npm run db:remigrate && npm run db:seed:all"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/sequelize": "^4.28.9",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
-    "@types/sequelize": "^4.28.9",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
